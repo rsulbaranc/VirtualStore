@@ -1,0 +1,28 @@
+CREATE DATABASE "WatchingDB"
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Spanish_Venezuela.1252'
+    LC_CTYPE = 'Spanish_Venezuela.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+
+CREATE TABLE public.users
+(
+    username character varying(15) COLLATE pg_catalog."default" NOT NULL,
+    password character varying(1000) COLLATE pg_catalog."default" NOT NULL,
+    email character varying(76) COLLATE pg_catalog."default" NOT NULL,
+    age integer,
+    country character varying(13) COLLATE pg_catalog."default",
+    gender character(2) COLLATE pg_catalog."default",
+    CONSTRAINT users_pkey PRIMARY KEY (username),
+    CONSTRAINT users_email_key UNIQUE (email)
+
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.users
+    OWNER to postgres;
